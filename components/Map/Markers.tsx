@@ -3,6 +3,9 @@ import { SourceCoordiContext } from '@/context/SourceCoordiContext';
 import { UserLocationContext } from '@/context/UserLocationContext';
 import React, { useContext } from 'react'
 import {Map,Marker} from 'react-map-gl'
+import drop from "../../Public/drop.png"
+import pin from "../../Public/pin.png"
+import Image from "next/image";
 
 function Markers
 () {
@@ -20,24 +23,27 @@ function Markers
       </Marker> */}
 
       {/* source marker */}
-      {sourceCoordinates.length!=0?<Marker
-        longitude={sourceCoordinates.lng} // Corrected access to lng
-        latitude={sourceCoordinates.lat} // Corrected access to lat
-        anchor="bottom"
-      >
-        <img src="./pin.png" alt="Marker" className="w-20 h-20" />{" "}
-        {/* Added alt text for accessibility */}
-      </Marker>:null}
+      {sourceCoordinates.length != 0 ? (
+        <Marker
+          longitude={sourceCoordinates.lng} // Corrected access to lng
+          latitude={sourceCoordinates.lat} // Corrected access to lat
+          anchor="bottom"
+        >
+          <Image src={pin} alt="Marker" className="w-20 h-20" />{" "}
+          {/* Added alt text for accessibility */}
+        </Marker>
+      ) : null}
 
       {/* destination marker */}
-      {destinationCoordinates.length!=0?
-      <Marker
-        longitude={destinationCoordinates.lng} // Corrected access to lng
-        latitude={destinationCoordinates.lat} // Corrected access to lat
-        anchor="bottom"
-      >
-        <img src="./drop.png" alt="Marker" className="w-10 h-10" />{" "}
-      </Marker>:null}
+      {destinationCoordinates.length != 0 ? (
+        <Marker
+          longitude={destinationCoordinates.lng} // Corrected access to lng
+          latitude={destinationCoordinates.lat} // Corrected access to lat
+          anchor="bottom"
+        >
+          <Image src={drop} alt="Marker" className="w-10 h-10" />{" "}
+        </Marker>
+      ) : null}
     </div>
   );
 }
